@@ -1,6 +1,6 @@
 // Férias na Cubos
 
-const input = "5 4 0 0";
+const input = "9673262476209 5813361861815 6615525176503 1471484075710";
 
 function ferias_na_cubos(input){
 	const grupos = input.split(' ');
@@ -15,12 +15,13 @@ function ferias_na_cubos(input){
 	// caso contrario o grupo 1 é zerado, pois o que tiver lá serão alocados no g3
 	g1 = g1 <= g3 ? 0 : (g1 - g3);
 
-	g2 = g2 > 0 && g2 % 2 === 0 ? (g2 / 2) : g2 > 0 ? Math.floor(g2 / 2) + 1 : 0;
+	let restoG2 = g2 % 2;
+	g2 = g2 > 0 && g2 % 2 === 0 ? (g2 / 2) : g2 > 0 ? (Math.floor(g2 / 2) + 1) : 0;
 
 	// Retratando g1 caso ainda tiver mais duas pessoas, elas serao alocadas no g2
-	g1 = g2 > 0 && g2 % 2 != 0 ? (g1 - 2) : g1;
+	g1 = g2 > 0 && restoG2 != 0 ? (g1 - 2) : g1;
 
-	g1 = g1 > 0 && g1 % 4 === 0 ? (g1 / 4) : g1 > 0 ? (Math.floor(g1 / 4) +1) : 0;
+	g1 = g1 > 0 && g1 % 4 === 0 ? (g1 / 4) : g1 > 0 ? (Math.floor(g1 / 4) + 1) : 0;
 
 	qtdTaxis += g1 + g2;
 
